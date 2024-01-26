@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 360px;
+  height: 300px;
+}
+
+.gallery {
+  max-width: 1128px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 48px;
+  column-gap: 24px;
+
+  outline: 2px solid tomato;
+}
