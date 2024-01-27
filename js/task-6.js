@@ -1,17 +1,13 @@
-const controls = document.getElementById("controls");
 const inputNumber = document.querySelector('[type="number"]');
 const buttonCreate = document.querySelector("button[data-create]");
 const buttonDestroy = document.querySelector("button[data-destroy]");
 const container = document.querySelector("#boxes");
 
 buttonCreate.addEventListener("click", () => {
-  if (
-    Number(inputNumber.value.trim()) >= 1 &&
-    Number(inputNumber.value.trim()) <= 100
-  ) {
+  if (Number(inputNumber.value) >= 1 && Number(inputNumber.value) <= 100) {
     createBoxes(Number(inputNumber.value));
   } else {
-    alert("Введіть значення з проміжку від 1 до 100");
+    alert("Enter a value between 1 and 100");
   }
 });
 
@@ -21,15 +17,15 @@ function createBoxes(amount) {
   let sizeStart = 30;
   let divArr = [];
   for (let i = 0; i < amount; i += 1) {
-    sizeStart += 10 * i;
+    sizeStart += 10;
     const div = `<div class="box" style="display: block; margin-right: 30px; margin-bottom: 30px; background-color: ${getRandomHexColor()}; width: ${sizeStart}px; height: ${sizeStart}px;"></div>`;
     divArr.push(div);
   }
   container.insertAdjacentHTML("beforeend", divArr.join(""));
+  inputNumber.value = "";
 }
 
 function destroyBoxes() {
-  inputNumber.value = "";
   container.innerHTML = "";
 }
 
