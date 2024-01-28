@@ -5,6 +5,7 @@ const container = document.querySelector("#boxes");
 
 buttonCreate.addEventListener("click", () => {
   if (Number(inputNumber.value) >= 1 && Number(inputNumber.value) <= 100) {
+    container.innerHTML = "";
     createBoxes(Number(inputNumber.value));
   } else {
     alert("Enter a value between 1 and 100");
@@ -17,15 +18,17 @@ function createBoxes(amount) {
   let sizeStart = 30;
   let divArr = [];
   for (let i = 0; i < amount; i += 1) {
-    sizeStart += 10;
-    const div = `<div class="box" style="display: block; margin-right: 30px; margin-bottom: 30px; background-color: ${getRandomHexColor()}; width: ${sizeStart}px; height: ${sizeStart}px;"></div>`;
+    const div = `<div class="box" style="display: block; margin-right: 30px; margin-bottom: 30px;
+     background-color: ${getRandomHexColor()}; width: ${sizeStart}px; height: ${sizeStart}px;"></div>`;
     divArr.push(div);
+    sizeStart += 10;
   }
   container.insertAdjacentHTML("beforeend", divArr.join(""));
   inputNumber.value = "";
 }
 
 function destroyBoxes() {
+  inputNumber.value = "";
   container.innerHTML = "";
 }
 
